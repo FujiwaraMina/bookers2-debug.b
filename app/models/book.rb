@@ -5,6 +5,10 @@ class Book < ApplicationRecord
   has_many :book_comments,dependent: :destroy
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
+  scope :created_today, -> { where(created_at: Time.zone.now.all_day) } #今日
+  scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) } #前日
+  scope :created_toweek, -> { where(created_at: Time.zone.now.all_week) } #今週
+  scope :created_lastweek, -> {where(created_at: 1.week.ago.all_week) } #前週
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
