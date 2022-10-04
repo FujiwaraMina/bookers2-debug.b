@@ -23,14 +23,12 @@
           <tr>
             <td><%= @today_book.count %></td>
             <td><%= @yesterday_book.count %></td>
-            <td>
               <% if @yesterday_book.count == 0 %>
-                前日の投稿はありません
+                <td>前日の投稿はありません</td>
               <% else %>
-                <% @the_day_before = @today_book.count / @yesterday_book.count.to_f %>
-                <%= (@the_day_before * 100).round  %><p>%</p>
+                <td><% @the_day_before = @today_book.count / @yesterday_book.count.to_f %>
+                <%= (@the_day_before * 100).round  %>%</td>
               <% end %>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -47,14 +45,12 @@
           <tr>
             <td><%= @toweek_book.count %></td>
             <td><%= @lastweek_book.count %></td>
-            <td>
               <% if @lastweek_book.count == 0 %>
-                前週の投稿はありません
+                <td>前週の投稿はありません</td>
               <% else %>
-                <% @the_week_before = @toweek_book.count / @lastweek_book.count.to_f %>
-                <%= (@the_week_before * 100).round %><p>%</p>
+                <td><% @the_week_before = @toweek_book.count / @lastweek_book.count.to_f %>
+                <%= (@the_week_before * 100).round %>%</td>
               <% end %>
-            </td>
           </tr>
         </tbody>
       </table>
